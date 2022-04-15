@@ -6,10 +6,20 @@ pagination:
   alias: tag
 permalink: "tag/{{ tag.slug | slug }}/index.html"
 eleventyComputed:
-  title: "{{ tag.title }} | EwN"
+  title: "{{ tag.name }} | Eleventy with Newt"
 ---
 <article>
   <div>
     <h1>Tag: {{ tag.name }}</h1>
+  </div>
+
+  <div>
+    {% for article in tag.articles.items %}
+      <section>
+        <a href="/article/{{article.slug}}">
+          <h2>{{ article.title }}</h2>
+        </a>
+      </section>
+    {% endfor %}
   </div>
 </article>

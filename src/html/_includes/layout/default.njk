@@ -1,5 +1,5 @@
 ---
-title: My Rad Blog
+title: Eleventy with Newt
 ---
 <!doctype html>
 <html lang="en">
@@ -10,6 +10,11 @@ title: My Rad Blog
   <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-  {{ content | safe }}
+  <header>
+    <div><a href="/">Eleventy with Newt</a></div>
+  </header>
+  <main>
+    {{ content | safe }}
+  </main>
 </body>
 </html>

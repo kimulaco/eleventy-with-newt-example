@@ -19,8 +19,20 @@ module.exports = (eleventyConfig) => {
   })
   eleventyConfig.addGlobalData('tags', async () => {
     const { data } = await newt.get('/blog2/tag')
-    console.log(data)
-    return data.items
+    const tags = await Promise.all(data.items.map((tag) => {
+      return new Promise(async (resolve, reject) => {
+        try {
+          const articles = await newt.get('/blog2/article', { tags: tag.slug })
+          resolve({
+            ...tag,
+            articles: articles.data,
+          })
+        } catch (error) {
+          reject(error)
+        }
+      })
+    }))
+    return tags
   })
 
   return {
