@@ -1,3 +1,4 @@
+const htmlMinifier = require("html-minifier")
 const { newt } = require('./newt/index')
 
 module.exports = (eleventyConfig) => {
@@ -33,6 +34,19 @@ module.exports = (eleventyConfig) => {
       })
     }))
     return tags
+  })
+
+  // Output
+  // https://www.11ty.dev/docs/config/#transforms
+  eleventyConfig.addTransform('htmlMinifier', (content, outputPath) => {
+    if(outputPath && outputPath.endsWith('.html')) {
+      return htmlMinifier.minify(content, {
+        useShortDoctype: true,
+        removeComments: true,
+        collapseWhitespace: true
+      })
+    }
+    return content
   })
 
   return {
