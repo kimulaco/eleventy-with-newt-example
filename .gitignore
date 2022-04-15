@@ -1,4 +1,10 @@
 node_modules
 .DS_Store
 
+# dist
 dist
+src/css
+
+# env
+.env
+.envrc

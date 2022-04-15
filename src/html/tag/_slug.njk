@@ -1,0 +1,15 @@
+---
+layout: default
+pagination:
+  data: tags
+  size: 1
+  alias: tag
+permalink: "tag/{{ tag.slug | slug }}/index.html"
+eleventyComputed:
+  title: "{{ tag.title }} | EwN"
+---
+<article>
+  <div>
+    <h1>Tag: {{ tag.name }}</h1>
+  </div>
+</article>

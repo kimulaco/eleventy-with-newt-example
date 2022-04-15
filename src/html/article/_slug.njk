@@ -1,0 +1,28 @@
+---
+layout: default
+pagination:
+  data: articles
+  size: 1
+  alias: article
+permalink: "article/{{ article.slug | slug }}/index.html"
+eleventyComputed:
+  title: "{{ article.title }} | EwN"
+---
+<article>
+  <div>
+    <img src="{{ article.coverImage.src }}" alt="">
+  </div>
+  <div>
+    <h1>{{ article.title }}</h1>
+    <div>公開日: {{ article._sys.createdAt }}</div>
+    <div>更新日: {{ article._sys.updatedAt }}</div>
+    <ul>
+      {% for tag in article.tags %}
+      <li><a href="/tag/{{tag.slug}}/">{{ tag.name }}</a></li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div>
+    {{ article.body | safe }}
+  </div>
+</article>

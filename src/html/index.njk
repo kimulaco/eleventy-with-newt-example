@@ -1,5 +1,9 @@
 ---
 layout: default
-title: Home
+title: EwN
 ---
-# {{ title }}
+{% for article in articles.items %}
+  <a href="/article/{{ article.slug }}/">
+    <div>{{ article.title }}</div>
+  </a>
+{% endfor %}
