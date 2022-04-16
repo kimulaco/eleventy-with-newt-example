@@ -2,12 +2,6 @@ const htmlMinifier = require("html-minifier")
 const { newt } = require('./newt/index')
 
 module.exports = (eleventyConfig) => {
-  // Load styles
-  eleventyConfig.addWatchTarget('./src/css/')
-  eleventyConfig.addPassthroughCopy({
-    'src/css': 'css',
-  })
-
   // Layout Alias
   // https://www.11ty.dev/docs/layouts/#layout-aliasing
   eleventyConfig.addLayoutAlias('default', 'layout/default.njk')
